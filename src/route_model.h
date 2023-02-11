@@ -6,6 +6,8 @@
 #include <unordered_map>
 #include "model.h"
 #include <iostream>
+#include <string>
+#include <sstream>
 
 class RouteModel : public Model {
 
@@ -25,6 +27,12 @@ class RouteModel : public Model {
 
         Node(){}
         Node(int idx, RouteModel * search_model, Model::Node node) : Model::Node(node), parent_model(search_model), index(idx) {}
+
+        std::string coords() {
+            std::ostringstream coord_stream;
+            coord_stream << "(" << x << ":" << y << ")";
+            return coord_stream.str();
+        }
 
       private:
         int index;
